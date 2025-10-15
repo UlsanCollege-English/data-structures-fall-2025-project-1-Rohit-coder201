@@ -1,26 +1,39 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/JWEh_q2R)
+
 # Multi-Queue Round-Robin Café (Interactive CLI)
 
 ## How to run
 
-(Insert directions to run your program here.)
+1.  Ensure you are in the *root directory* of the repository (the folder containing src and tests).
+2.  Execute the main CLI module using the Python package flag
 
 
 ## How to run tests locally
-(Insert directions to run your tests here.)
+1. Ensure you have pytest installed:
+
+pip install pytest
+
+2. Execute the test suite from the project root:
+
+pytest
+
 
 
 ## Complexity Notes
-Briefly justify:
+Complexity Notes Justification
+Category:		
+Queue Design	
 
-- Your queue design (e.g., circular buffer).
+Complexity: Custom Queue with Front Index	
 
-- Time complexity: enqueue, dequeue amortized O(1); run is O(#turns + total_minutes_worked).
+Justification: The CustomQueue uses a standard Python list with a front index. This avoids the slow O(N) shift operation of list.pop(0). Periodic list compaction (trimming) ensures the performance stays efficient.
 
-- Space complexity: O(N) tasks + metadata.
+Time Complexity		
+Enqueue/Dequeue	Amortized O(1)	Enqueue (list.append()) is amortized O(1). Dequeue is O(1) by index access, with the occasional O(N) compaction cost spread across many operations, making it amortized O(1).
+Run	O(#turns+total_minutes_worked)	Runtime is dominated by the number of turns executed plus the total work time consumed across all tasks.
+Space Complexity	O(N tasks+metadata)	Space scales linearly with the total number of tasks 👎 currently in all queues
 
-
-## **Delete this section before submission.**
+## *Delete this section before submission.*
 ### Common pitfalls
 - Display should print after each RUN turn only.
 
@@ -39,12 +52,14 @@ Briefly justify:
 
 ### Grading rubric (I will be using this to grade your submission)
 
-**__Correctness (50):__** RR behavior, logs, display-per-turn, auto task ids, menu handling, rejects.
+*__Correctness (50):__* RR behavior, logs, display-per-turn, auto task ids, menu handling, rejects.
 
-**__Complexity notes (15):__** correct, concise, justified.
+*__Complexity notes (15):__* correct, concise, justified.
 
-**__Student tests (15):__** ≥4 targeted, deterministic tests incl. steps validation.
+*__Student tests (15):__* ≥4 targeted, deterministic tests incl. steps validation.
 
-**__Code quality (10):__** structure, type hints on public surfaces, docstrings, PEP 8.
+*__Code quality (10):__* structure, type hints on public surfaces, docstrings, PEP 8.
 
-**__Docs & UX (10):__** README completeness; exact messages; clear CLI.
+*__Docs & UX (10):__* README completeness; exact messages; clear CLI.
+classroom.github.com
+Write to Rohit Chhantyal
